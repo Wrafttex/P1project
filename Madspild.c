@@ -5,5 +5,23 @@ int main (void)
 {
 
 
-    
+
 }
+
+void menu (void)
+{
+    printf("|---------------------------------------|
+            |                Madplan                |
+            |                                       |
+            |
+            |
+            
+            
+            
+            ")
+
+
+
+}
+
+void 
