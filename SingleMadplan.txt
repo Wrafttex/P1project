@@ -7,10 +7,10 @@ Ingredienser:$
 3.0 stk. sandwichbroed: 200
 5.0 stk. Cherrytomater: 220
 1.0 skive. Iceberg: 220
-0.25 pk. hamburgerryg: 220
-0.5 pk. bacon: 69420
+1.25 pk. hamburgerryg: 220
+1.5 pk. bacon: 69420
 Basislager:
- 1 Dressing 20
+1 Dressing 20
 &
 Fremgangsmaade:
 - Tomater skaeres i skiver

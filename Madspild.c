@@ -6,7 +6,7 @@
 #define MEDIUM_STR_LGT 30
 
 // Magni bruger denne
-typedef struct
+typedef struct tingredien
 {
    double volume;
    char navn [MAX_NAME_LGT];
@@ -21,16 +21,17 @@ typedef struct
    char fremgangsMaade [MAX_NAME_LGT];
 } retter;
 
-void readDataIngredienser(singrediens ingrediens[]);
+int readDataIngredienser(singrediens ingrediens[],char filename[]);
 void readDataBase (void);
-void gangerOp(int antalPersoner, singrediens ingrediens[]);
+void gangerOp(int antalPersoner, singrediens ingrediens[], int reader);
 
 int main (void)
 {
    int valg;
    int antalPersoner;
    int i;
-
+   char filename[25];
+   int reader;
    singrediens ingrediens[10]={0,""};
    printf("-------Den Digitale Madplan-------\n");
    printf(" Alle madplaner gaelder for 7 dage,\n og inkludere inkoebsliste, opskrifter\n og dato for andvendelse\n\n");
@@ -38,13 +39,18 @@ int main (void)
    printf("1) Vegansk\n");
    printf("2) Proteinbaseret\n");
    printf("3) Kylling\n");
+   printf("4) Inkoebsliste\n");
+   printf("5) Afslut menu\n"); 
  
    /*getting input*/
    scanf("%d", &valg);
 
    printf("Antal personer: ");
    scanf("%d", &antalPersoner);
- 
+
+   printf("filename is SingleMadplan: ");
+   scanf("%s",&filename);
+
    /*Finding which choice was asked for (my style of using brackets may be different than yours */
    if (valg == 1){
       printf("Du valgte en vegansk madplan!\n");
@@ -60,10 +66,12 @@ int main (void)
    }
    else if (valg == 5){
       printf("Afslut menu!\n");
+      EXIT_SUCCESS;
    }
+
    //readDataBase();
-   readDataIngredienser(ingrediens);
-   gangerOp(antalPersoner, ingrediens);
+   reader = readDataIngredienser(ingrediens,filename);
+   gangerOp(antalPersoner, ingrediens, reader);
    size_t n = (sizeof(ingrediens)/sizeof(singrediens));
    for (i = 0; i < n; i++)
    {
@@ -91,32 +99,38 @@ void readDataBase (void)
    fclose(opskrifter);
 } 
 */
+
+
 /* This function reads the ingrediens and puts it into a double and a string,
  * so that we can change the value of how much a person should use ;D
  * From the '$' in the file to the int 69420 appears, we read the ingredient volume and ingredient name */
 
- void readDataIngredienser (singrediens ingrediens[]) 
+ int readDataIngredienser (singrediens ingrediens[], char filename[]) 
  {
-   int checker = 0, i = 0;
+   int checker = 0, i = 0, reader = 0; 
+   strcat(filename, ".txt"); /* f.eks filename = kodboller + .txt, dette vil give filename som kodboller, og dette kan vi bruge til opne filen med */
    FILE* opskrifter;
-   opskrifter = fopen("SingleMadplan.txt", "r"); 
-   fscanf(opskrifter,"%*[^$]$");
+
+   opskrifter = fopen(filename, "r"); 
+   fscanf(opskrifter, "%*[^$]$");
+
    while (checker != 69420){
-      fscanf(opskrifter, "%lf %[^:]: %d",&ingrediens[i].volume, &ingrediens[i].navn, &checker);
-      ++i; 
+      reader= fscanf(opskrifter, "%lf %[^:]: %d",&ingrediens[i].volume, &ingrediens[i].navn, &checker);
+      ++i;
    }
+   
    fclose(opskrifter);
+
+   return reader;
  }
 
 
-void gangerOp(int antalPersoner, singrediens ingrediens[]) 
+void gangerOp(int antalPersoner, singrediens ingrediens[], int reader) 
 {
    int i; 
-   size_t n= (sizeof(ingrediens)/sizeof(singrediens));
-   for (i = 0; i < n; i++)
+   for (i = 0; i < reader; i++)
    {
       ingrediens[i].volume = antalPersoner * ingrediens[i].volume; 
-      printf("kører den? \n");
    }
      
 }
