@@ -4,14 +4,12 @@ Clubsandwich m. hamburgerryg og bacon;
 Antal personer: 1;
 Tidsforbrug: 15 minutter;
 Ingredienser:$
-3.0 stk. sandwichbroed: 200
-5.0 stk. Cherrytomater: 220
-1.0 skive. Iceberg: 220
-1.25 pk. hamburgerryg: 220
-1.5 pk. bacon: 69420
-Basislager:
-1 Dressing 20
-&
+3.0 stk. Sandwichbroed: 200
+3.0 stk. Cherrytomater: 220
+3.0 skive. Iceberg: 220
+0.25 pk. Hamburgerryg: 220
+0.5 pk. Bacon: 220
+1.0 sjat. Dressing: 69420
 Fremgangsmaade:
 - Tomater skaeres i skiver
 - Broedet ristet let og skaeres derefter i trekanter
@@ -23,8 +21,8 @@ Fremgangsmaade:
 -------------------------------------------------|
 Tirsdag;
 Ret; Hjemmelavet salatpizza
-Antal personer; Singler j
-Tidsforbrug; 60 minutter. k
+Antal personer; Singler
+Tidsforbrug; 60 minutter.
 Ingredienser; 
 Pizzabund;
 - 25 g. gaer
@@ -33,29 +31,29 @@ Pizzabund;
 - 0,25 dl. olie
 - 1/4 tsk. salt
 Fyld; 
-- 1/2 ps. revet ost (mozzarella el. cheddar)
-- 1/2 pk. pepperoni el. hamburgerryg i skiver
-- 1/8 iceberg
-- 1/8 agurk
-- 1 tomater / 3-4 cherrytomater
+- 1/2 ps. Revet ost (mozzarella el. cheddar)
+- 1/2 pk. Pepperoni el. hamburgerryg i skiver
+- 1/8 Iceberg
+- 1/8 Agurk
+- 1 Tomater / 3-4 cherrytomater
 - Dressing
 Pizzasauce;
 - 1/2 ds. hk. tomater
-- 1/4 tsk. salt
-- 1 tsk. tørret oregano
-- 1/2 tsk. sukker
-- 1 fed hvidloeg
+- 1/4 tsk. Salt
+- 1 tsk. Toerret oregano
+- 1/2 tsk. Sukker
+- 1 fed Hvidloeg
 &
 Fremgangsmaade;
 - Mel, vand, olie, gaer og lidt salt blandes sammen og aeltes til en bolle.
 - Dejen skal haeve i en halv time
-- Taend ovnen på 225 grader.
-- Rul dejen ud på bordet og laeg den over på en bradepande
+- Taend ovnen paa 225 grader.
+- Rul dejen ud paa bordet og laeg den over paa en bradepande
 - Hakkede tomater, hvidloeg, oregano, sukker og salt blendes til pizzasauce og haeldes over dejen
 - Halvdelen af osten fordeles paa pizzabunden.
 - Hamburgerryg eller pepperoni fordeles som det naeste – resten af osten som det sidste.
-- Pizzaen skal have ca. 20 min. i ovnen på 225 grader eller efter hvilken sproedhed man oensker.
-- Salaten skaeres som oensket til at komme ovenpå pizzaen
+- Pizzaen skal have ca. 20 min. i ovnen paa 225 grader eller efter hvilken sproedhed man oensker.
+- Salaten skaeres som oensket til at komme ovenpaa pizzaen
 - Dressing puttes paa ved servering sammen med salaten.
 &
 [TEXT_-1]
@@ -65,13 +63,13 @@ Ret: Marineret kyllingbryst m. kartofler, bearnaisesauce & salat
 Antal personer: Singler j
 Tidsforbrug: 55 minutter. k
 Ingredienser: 
-- 200 g. oeko. kartofler
-- 1 kyllingebryst (450 g. i en pakke)
-- Bearnaisesauce, glas
+- 200 g. Kartofler
+- 1 Kyllingebryst (450 g. i en pakke)
+- Bearnaisesauce
 - Iceberg
 - Roed peber
 - Agurk
-- 2 guleroedder
+- 2 Guleroedder
 Basislager: 
 - Olie
 - Paprika
@@ -80,11 +78,11 @@ Basislager:
 Fremgangsmaade:
 - Lav marinade af olie + paprika
 - Put kyllingen i en frostpose sammen med olieblandingen, luk posen og aelt det sammen med fingrene.
-- Lad det staa i posen – gerne så længe som muligt. Evt. put det i en pose allerede aftenen inden (altså mandag aften).
+- Lad det staa i posen – gerne saa laenge som muligt. Evt. put det i en pose allerede aftenen inden (altsaa mandag aften).
 - Put kyllingen i et ildfast fad (op af posen) og krydr det med salt og peber (put lidt vand i bunden af fadet for at kyllingen ikke braender fast og bliver toert) – bages i ovnen ved 200 g. alm ovn i 35-40 min.
 - Kog kartoflerne i letsaltet vand
 - Mens kartoflerne koges skaeres salat
-- Sovsen laves som anvist på emballagen.
+- Sovsen laves som anvist paa emballagen.
 &
 [TEXT_0]
 -------------------------------------------------|
@@ -93,16 +91,16 @@ Ret; Klassisk rugbroedsdag
 Antal personer: Singler j
 Tidsforbrug;5-10 minutter. k
 Ingredienser: 
-- 1 pk. fuldkornsrugbroed
+- 1 pk. Fuldkornsrugbroed
 - Smoer
-- 1 aeg
+- 1 Aeg
 - Hamburgerryg
 - Agurk
 - Tomat
 - Iceberg
 Basislager; 
 - Loegringe
-- Evt. mayonnaise
+- Evt. Mayonnaise
 &
 [TEXT_1]
 -------------------------------------------------|
@@ -111,21 +109,21 @@ Ret; aeggekage m. kartofler, porre og bacon
 Antal personer; Singler j
 Tidsforbrug; 40 - 45 minutter. k
 Ingredienser;
-3 kartofler af mellem stoerrelse
-1/2 porre
-1/2 pk. bacon i skiver
-3 aeg
+3 Kartofler 
+1/2 Porre
+1/2 pk. Bacon i skiver
+3 Aeg
 1 Purloeg
-1/2 dl. maelk
+1/2 dl. Maelk
 &
 - Fremgangsmaade;
-- Tænd ovnen på 200 g. alm. ovn
-- Kartoflerne skraelles og skaeres i små tern, samt forkoges i 20 min.
-- Imens kartoflerne koges skaeres porre i tynde ringe og tilsaettes kartoflerne, når der er 5 min. tilbage af kogetiden.
-- Bacon steges sproedt på panden
+- Taend ovnen paa 200 g. alm. ovn
+- Kartoflerne skraelles og skaeres i smaa tern, samt forkoges i 20 min.
+- Imens kartoflerne koges skaeres porre i tynde ringe og tilsaettes kartoflerne, naar der er 5 min. tilbage af kogetiden.
+- Bacon steges sproedt paa panden
 - aeggene roeres sammen med klippet purloeg, maelk, salt og peber
-- Vandet draenes fra kartofler og porre og tilsaettes tærteformen, derefter det stegte bacon og til sidst aeggemassen.
-- aeggekagen bages i ovnen til den har en fast masse og er gylden ovenpå. (Ca. 20-25 min)
+- Vandet draenes fra kartofler og porre og tilsaettes taerteformen, derefter det stegte bacon og til sidst aeggemassen.
+- aeggekagen bages i ovnen til den har en fast masse og er gylden ovenpaa. (Ca. 20-25 min)
 - Til aeggekagen kan der serveres en laekker salat.
 &
 [TEXT_2]
@@ -135,17 +133,17 @@ Ret; (alt i fad) Kylling i floedesauce m. kartofler og groentsager
 Antal personer; Singler j
 Tidsforbrug; 1 time 15 minutter. k
 Ingredienser; 
-150 g. kyllingebrystfilet
-2 dl. piskefloede (38%)
-200 g. kartofler
-1/2 porre
-1/2 roed peber
-100 g. groenne boenner
-1/2 ps. revet mozzarella
+150 g. Kyllingebrystfilet
+2 dl. Piskefloede (38%)
+200 g. Kartofler
+1/2 Porre
+1/2 Roed peber
+100 g. Groenne boenner
+1/2 ps. Revet mozzarella
 Basislager: 
-1 roedloeg
+1 Roedloeg
 Salt + peber
-1 tsk. paprika
+1 tsk. Paprika
 &
 Fremgangsmaade;
 - Peber skylles og skaeres i strimler
@@ -153,7 +151,7 @@ Fremgangsmaade;
 - Loeg pilles og skaeres i smaa tern
 - Kyllingen skaeres i strimler og vendes i salt, peber og paprika
 - Kartoflerne skraelles og skaeres i skiver
-- Boenner, peber, porre, løg og kylling puttes i et ildfast fad
+- Boenner, peber, porre, loeg og kylling puttes i et ildfast fad
 - Kartofler laegges i skiver over groentsagerne og kyllingen som et laag
 - Floede, salt og peber haeldes over – til sidst drysses mozzarella over
 - Retten gives 1 time i ovnen ved 200 g. alm. ovn.
