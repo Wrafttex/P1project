@@ -25,7 +25,6 @@ typedef struct tretter
 /* Prototypes */
 
 int readDataIngredienser (singrediens ingrediens[],char filename[], sretter retter[]);
-void readDataBase (void);
 void gangerOp (int antalPersoner, singrediens ingrediens[], int reader);
 void instructions (void);
 int mealplanChooser ();
@@ -51,6 +50,7 @@ int main (void)
 
    reader = readDataIngredienser(ingrediens, filename, retter);
    gangerOp(antalPersoner, ingrediens, reader);
+   printf("\n%s \n%s %d \n%s \n%s \n",retter[0].rettensNavn,retter[0].antalPersoner, antalPersoner, retter[0].forberedningsTid, retter[0].ingredienser);
    for (i = 0; i < reader; i++)
    {
       printf("%5.2lf %s\n", ingrediens[i].volume, ingrediens[i].navn);
@@ -117,7 +117,7 @@ int mealplanChooser (void)
    else if (valg == 3)
    {
 
-      printf("Indkoebslist\n")
+      printf("Indkoebslist\n");
    }
    else if (valg == 4)
    {
@@ -143,14 +143,12 @@ int mealplanChooser (void)
 
    }
    opskrifter = fopen(filename, "r"); 
-   fscanf(opskrifter, "%*[^$]$");
-   printf("har gjort foerste fscanf\n");
+   fscanf(opskrifter, "%[^;]; %[^;]; %[^;]; %[^;];", &retter[i].rettensNavn, &retter[i].antalPersoner, &retter[i].forberedningsTid, &retter[i].ingredienser);
    while (checker != 69420){
       fscanf(opskrifter, "%lf %[^:]: %d",&ingrediens[i].volume, &ingrediens[i].navn, &checker);
       ++i;
    }
    
-    printf("har gjort while\n");
    fscanf(opskrifter,"%[^&]&", &retter[1].fremgangsMaade);
    fclose(opskrifter);
 
