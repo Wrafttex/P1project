@@ -1,8 +1,7 @@
-Torsdag; 
-Ret; Klassisk rugbroedsdag
-Antal personer: 1; 
-Tidsforbrug; 5-10 minutter. 
-Ingredienser:$
+Klassisk rugbroedsdag;
+Antal personer:; 
+Tidsforbrug: 5-10 minutter:;
+Ingredienser:;
 1 pk. Fuldkornsrugbroed: 220
 1 sjat. Smoer: 220
 1 Aeg: 220

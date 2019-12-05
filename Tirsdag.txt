@@ -1,8 +1,7 @@
-Tirsdag;
 Hjemmelavet salatpizza;
-Antal personer: 1; 
+Antal personer:; 
 Tidsforbrug: 60 minutter;
-Ingredienser:$
+Ingredienser:;
 1.0 Pizzabund: 11
 25.0 g. gaer: 11
 300.0 gram mel: 11

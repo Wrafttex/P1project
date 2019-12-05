@@ -55,7 +55,7 @@ int main (void)
    {
       printf("%5.2lf %s\n", ingrediens[i].volume, ingrediens[i].navn);
    }
-   printf("%s",retter[1].fremgangsMaade);
+   printf("%s\n",retter[1].fremgangsMaade);
    
    return 0;
 }
