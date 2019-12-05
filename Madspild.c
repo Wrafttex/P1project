@@ -34,7 +34,7 @@ char* scanDataFilename (char filename[]);
 
 int main (void)
 {
-   sretter retter[4];
+   sretter retter[4]={"","","","",""};
    int valg;
    int antalPersoner;
    int i;
@@ -45,33 +45,38 @@ int main (void)
    instructions();
    scanDataAntalPersoner(&antalPersoner);
    valg = mealplanChooser();
+   
    strcpy(filename,scanDataFilename(filename));
    printf("%s",filename);
-
+   
    AntalIgredienser = readDataIngredienser(ingrediens, filename, retter);
    gangerOp(antalPersoner, ingrediens, AntalIgredienser);
+   
    printf("\n%s \n%s %d \n%s \n%s \n",retter[0].rettensNavn,retter[0].antalPersoner, antalPersoner, retter[0].forberedningsTid, retter[0].ingredienser);
+
    for (i = 0; i < AntalIgredienser; i++)
    {
       printf("%5.2lf %s\n", ingrediens[i].volume, ingrediens[i].navn);
    }
-   printf("%s\n",retter[1].fremgangsMaade);
-   
+   if(strcmp(filename,"soendag.txt")!=0)
+      printf("%s\n",retter[1].fremgangsMaade);
+      
    return 0;
 }
 
-
+/* scans for which choice the user wanted*/
 void scanDataValg (int *valg)
 {
    scanf("%d", valg);
 }
-
+/* scans for how many people are gonna eat, and puts the number into antalpersoner*/
 void scanDataAntalPersoner (int *antalPersoner)
 {
    printf("Antal personer: ");
    scanf("%d", antalPersoner);
 }
 
+/* scans for which file you want to access, and puts into a char array that is called filename*/
 char* scanDataFilename (char filename[])
 {
    printf("filename is SingleMadplan: ");
@@ -99,7 +104,8 @@ int mealplanChooser (void)
    printf("Vaelg en af de nedstaeende madplaner\n");
    printf("1) Den normale\n");
    printf("2) Mindre koed\n");
-   printf("3) Afslut menu\n"); 
+   printf("3) indkoebsliste\n");
+   printf("4) Afslut menu\n"); 
 
    scanDataValg(&valg); // Du er så smart kure :O
 
@@ -144,12 +150,14 @@ int mealplanChooser (void)
    }
    opskrifter = fopen(filename, "r"); 
    fscanf(opskrifter, "%[^;]; %[^;]; %[^;]; %[^;];", &retter[i].rettensNavn, &retter[i].antalPersoner, &retter[i].forberedningsTid, &retter[i].ingredienser);
-   while (checker != 69420){
+   if (strcmp(filename,"Soendag.txt")!=0){
+      while (checker != 69420){
       fscanf(opskrifter, "%lf %[^:]: %d",&ingrediens[i].volume, &ingrediens[i].navn, &checker);
       ++i;
-   }
+    }
    
    fscanf(opskrifter,"%[^&]&", &retter[1].fremgangsMaade);
+   }
    fclose(opskrifter);
 
    return i;
