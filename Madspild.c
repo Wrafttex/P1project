@@ -25,7 +25,7 @@ typedef struct tretter
 /* Prototypes */
 
 int readDataIngredienser (singrediens ingrediens[],char filename[], sretter retter[]);
-void gangerOp (int antalPersoner, singrediens ingrediens[], int reader);
+void gangerOp (int antalPersoner, singrediens ingrediens[], int AntalIgredienser);
 void instructions (void);
 int mealplanChooser ();
 void scanDataValg (int *valg);
@@ -39,7 +39,7 @@ int main (void)
    int antalPersoner;
    int i;
    char filename[25];
-   int reader;
+   int AntalIgredienser;
    singrediens ingrediens[25]={0,""};
  
    instructions();
@@ -48,10 +48,10 @@ int main (void)
    strcpy(filename,scanDataFilename(filename));
    printf("%s",filename);
 
-   reader = readDataIngredienser(ingrediens, filename, retter);
-   gangerOp(antalPersoner, ingrediens, reader);
+   AntalIgredienser = readDataIngredienser(ingrediens, filename, retter);
+   gangerOp(antalPersoner, ingrediens, AntalIgredienser);
    printf("\n%s \n%s %d \n%s \n%s \n",retter[0].rettensNavn,retter[0].antalPersoner, antalPersoner, retter[0].forberedningsTid, retter[0].ingredienser);
-   for (i = 0; i < reader; i++)
+   for (i = 0; i < AntalIgredienser; i++)
    {
       printf("%5.2lf %s\n", ingrediens[i].volume, ingrediens[i].navn);
    }
@@ -155,10 +155,10 @@ int mealplanChooser (void)
    return i;
  }
 
-void gangerOp(int antalPersoner, singrediens ingrediens[], int reader) 
+void gangerOp(int antalPersoner, singrediens ingrediens[], int AntalIgredienser) 
 {
    int i; 
-   for (i = 0; i < reader; i++)
+   for (i = 0; i < AntalIgredienser; i++)
    {
       ingrediens[i].volume = antalPersoner * ingrediens[i].volume; 
    }
