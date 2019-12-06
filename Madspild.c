@@ -23,8 +23,14 @@ typedef struct structRetter
 } sretter;
 
 /* Prototypes */
+<<<<<<< HEAD
 int readDataIngredienser (structIngrediens ingrediens[],char filename[], structRetter retter[]);
 void gangerOp (int antalPersoner, structIngrediens ingrediens[], int antalIngrediens);
+=======
+
+int readDataIngredienser (singrediens ingrediens[],char filename[], sretter retter[]);
+void gangerOp (int antalPersoner, singrediens ingrediens[], int AntalIgredienser);
+>>>>>>> refs/remotes/origin/master
 void instructions (void);
 int mealplanChooser ();
 int scanDataValg (void);
@@ -33,18 +39,29 @@ char* scanDataFilename (char filename[]);
 
 int main (void)
 {
+<<<<<<< HEAD
    structRetter retter[4];
+=======
+   sretter retter[4]={"","","","",""};
+>>>>>>> refs/remotes/origin/master
    int valg;
    int antalPersoner;
    int i;
    char filename[25];
+<<<<<<< HEAD
    int antalIngrediens;
    structIngrediens ingrediens[25]={0,""};
+=======
+   int AntalIgredienser;
+   singrediens ingrediens[25]={0,""};
+>>>>>>> refs/remotes/origin/master
  
    instructions();
    antalPersoner = scanDataAntalPersoner();
    valg = mealplanChooser();
+   
    strcpy(filename,scanDataFilename(filename));
+<<<<<<< HEAD
 
    printf("%s",filename); // Test
 
@@ -52,23 +69,44 @@ int main (void)
    gangerOp(antalPersoner, ingrediens, antalIngrediens);
    printf("\n%s \n%s %d \n%s \n%s \n",retter[0].rettensNavn,retter[0].antalPersoner, antalPersoner, retter[0].forberedningsTid, retter[0].ingredienser);
    for (i = 0; i < antalIngrediens; i++)
+=======
+   printf("%s",filename);
+   
+   AntalIgredienser = readDataIngredienser(ingrediens, filename, retter);
+   gangerOp(antalPersoner, ingrediens, AntalIgredienser);
+   
+   printf("\n%s \n%s %d \n%s \n%s \n",retter[0].rettensNavn,retter[0].antalPersoner, antalPersoner, retter[0].forberedningsTid, retter[0].ingredienser);
+
+   for (i = 0; i < AntalIgredienser; i++)
+>>>>>>> refs/remotes/origin/master
    {
       printf("%5.2lf %s\n", ingrediens[i].volume, ingrediens[i].navn);
    }
-   printf("%s",retter[1].fremgangsMaade);
-   
+   if(strcmp(filename,"soendag.txt")!=0)
+      printf("%s\n",retter[1].fremgangsMaade);
+      
    return 0;
 }
 
+<<<<<<< HEAD
 int scanDataValg (void)
+=======
+/* scans for which choice the user wanted*/
+void scanDataValg (int *valg)
+>>>>>>> refs/remotes/origin/master
 {
    int valg;
    scanf("%d", &valg);
    return valg;
 }
+<<<<<<< HEAD
 
 /* HUSK AT FIXE */
 int scanDataAntalPersoner (void)
+=======
+/* scans for how many people are gonna eat, and puts the number into antalpersoner*/
+void scanDataAntalPersoner (int *antalPersoner)
+>>>>>>> refs/remotes/origin/master
 {
    int antalPersoner;
    printf("Antal personer: ");
@@ -76,6 +114,7 @@ int scanDataAntalPersoner (void)
    return antalPersoner;
 }
 
+/* scans for which file you want to access, and puts into a char array that is called filename*/
 char* scanDataFilename (char filename[])
 {
    printf("filename is SingleMadplan: ");
@@ -102,7 +141,8 @@ int mealplanChooser (void)
    printf("Vaelg en af de nedstaeende madplaner\n");
    printf("1) Den normale\n");
    printf("2) Mindre koed\n");
-   printf("3) Afslut menu\n"); 
+   printf("3) indkoebsliste\n");
+   printf("4) Afslut menu\n"); 
 
    scanDataValg(&valg); // Du er så smart kure :O
 
@@ -147,21 +187,30 @@ int mealplanChooser (void)
 
    opskrifter = fopen(filename, "r"); 
    fscanf(opskrifter, "%[^;]; %[^;]; %[^;]; %[^;];", &retter[i].rettensNavn, &retter[i].antalPersoner, &retter[i].forberedningsTid, &retter[i].ingredienser);
-   while (checker != 69420){
+   if (strcmp(filename,"Soendag.txt")!=0){
+      while (checker != 69420){
       fscanf(opskrifter, "%lf %[^:]: %d",&ingrediens[i].volume, &ingrediens[i].navn, &checker);
       ++i;
-   }
+    }
    
    fscanf(opskrifter,"%[^&]&", &retter[1].fremgangsMaade);
+   }
    fclose(opskrifter);
 
    return i;
  }
 
+<<<<<<< HEAD
 void gangerOp(int antalPersoner, structIngrediens ingrediens[], int antalIngrediens) 
 {
    int i; 
    for (i = 0; i < antalIngrediens; i++)
+=======
+void gangerOp(int antalPersoner, singrediens ingrediens[], int AntalIgredienser) 
+{
+   int i; 
+   for (i = 0; i < AntalIgredienser; i++)
+>>>>>>> refs/remotes/origin/master
    {
       ingrediens[i].volume = antalPersoner * ingrediens[i].volume; 
    }
