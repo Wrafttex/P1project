@@ -7,118 +7,108 @@
 #define MEDIUM_STR_LGT 30
 
 // Magni bruger denne
-typedef struct structIngredien
+typedef struct structIngrediensDeclare
 {
    double volume;
-   char navn [MAX_NAME_LGT];
-} singrediens;
+   char name [MAX_NAME_LGT];
+} structIngrediens;
 
-typedef struct structRetter
+typedef struct structMealDeclare
 {
-   char rettensNavn [MAX_NAME_LGT];
-   char antalPersoner [MAX_NAME_LGT];
-   char forberedningsTid [MAX_NAME_LGT];
-   char ingredienser [MAX_NAME_LGT];
-   char fremgangsMaade [MAX_NAME_LGT];
-} sretter;
+   char mealName [MAX_NAME_LGT];
+   char amountOfPeople [MAX_NAME_LGT];
+   char preparationTime [MAX_NAME_LGT];
+   char ingredients [MAX_NAME_LGT];
+   char procedure [MAX_NAME_LGT];
+} structMeal;
 
 /* Prototypes */
-<<<<<<< HEAD
-int readDataIngredienser (structIngrediens ingrediens[],char filename[], structRetter retter[]);
-void gangerOp (int antalPersoner, structIngrediens ingrediens[], int antalIngrediens);
-=======
-
-int readDataIngredienser (singrediens ingrediens[],char filename[], sretter retter[]);
-void gangerOp (int antalPersoner, singrediens ingrediens[], int AntalIgredienser);
->>>>>>> refs/remotes/origin/master
+int readDataIngredients (structIngrediens ingrediens[],char filename[], structMeal meals[]);
+void multiplier (int amountOfPeople, structIngrediens ingrediens[], int amountOfIngredients);
 void instructions (void);
 int mealplanChooser ();
-int scanDataValg (void);
-int scanDataAntalPersoner (void);
-char* scanDataFilename (char filename[]);
+int scanDataChooser (void);
+int scanDataAmountOfPeople (void);
+char* scanDatafilename (char filename[]);
+void loopPrint(structIngrediens ingrediens[], structMeal meals[],int amountOfPeople, char filename[], int amountOfIngredients);
 
 int main (void)
 {
-<<<<<<< HEAD
-   structRetter retter[4];
-=======
-   sretter retter[4]={"","","","",""};
->>>>>>> refs/remotes/origin/master
-   int valg;
-   int antalPersoner;
+   structMeal meals[4];
+   int choice;
+   int amountOfPeople;
    int i;
    char filename[25];
-<<<<<<< HEAD
-   int antalIngrediens;
+   int amountOfIngredients;
    structIngrediens ingrediens[25]={0,""};
-=======
-   int AntalIgredienser;
-   singrediens ingrediens[25]={0,""};
->>>>>>> refs/remotes/origin/master
  
    instructions();
-   antalPersoner = scanDataAntalPersoner();
-   valg = mealplanChooser();
+   amountOfPeople = scanDataAmountOfPeople();
+   choice = mealplanChooser();
    
-   strcpy(filename,scanDataFilename(filename));
-<<<<<<< HEAD
+   strcpy(filename,scanDatafilename(filename));
 
    printf("%s",filename); // Test
 
-   antalIngrediens = readDataIngredienser(ingrediens, filename, retter);
-   gangerOp(antalPersoner, ingrediens, antalIngrediens);
-   printf("\n%s \n%s %d \n%s \n%s \n",retter[0].rettensNavn,retter[0].antalPersoner, antalPersoner, retter[0].forberedningsTid, retter[0].ingredienser);
-   for (i = 0; i < antalIngrediens; i++)
-=======
-   printf("%s",filename);
-   
-   AntalIgredienser = readDataIngredienser(ingrediens, filename, retter);
-   gangerOp(antalPersoner, ingrediens, AntalIgredienser);
-   
-   printf("\n%s \n%s %d \n%s \n%s \n",retter[0].rettensNavn,retter[0].antalPersoner, antalPersoner, retter[0].forberedningsTid, retter[0].ingredienser);
-
-   for (i = 0; i < AntalIgredienser; i++)
->>>>>>> refs/remotes/origin/master
-   {
-      printf("%5.2lf %s\n", ingrediens[i].volume, ingrediens[i].navn);
-   }
-   if(strcmp(filename,"soendag.txt")!=0)
-      printf("%s\n",retter[1].fremgangsMaade);
-      
+   amountOfIngredients = readDataIngredients(ingrediens, filename, meals);
+   multiplier(amountOfPeople, ingrediens, amountOfIngredients);
+   loopPrint(ingrediens, meals, amountOfPeople, filename, amountOfIngredients);
    return 0;
 }
 
-<<<<<<< HEAD
-int scanDataValg (void)
-=======
-/* scans for which choice the user wanted*/
-void scanDataValg (int *valg)
->>>>>>> refs/remotes/origin/master
+int scanDataChooser (void)
 {
-   int valg;
-   scanf("%d", &valg);
-   return valg;
-}
-<<<<<<< HEAD
-
-/* HUSK AT FIXE */
-int scanDataAntalPersoner (void)
-=======
-/* scans for how many people are gonna eat, and puts the number into antalpersoner*/
-void scanDataAntalPersoner (int *antalPersoner)
->>>>>>> refs/remotes/origin/master
-{
-   int antalPersoner;
-   printf("Antal personer: ");
-   scanf("%d", &antalPersoner);
-   return antalPersoner;
+   int choice = 0;
+   do
+   {
+      if ((choice >= 5 || choice < 0))
+      {
+         printf("Dit valg passer ikke med de givne muligheder ");
+         fflush(stdin);
+         choice = -1;
+      }
+         
+      scanf("%d", &choice);
+   } while ((choice >= 5 || choice < 0));
+   
+   return choice;
 }
 
-/* scans for which file you want to access, and puts into a char array that is called filename*/
-char* scanDataFilename (char filename[])
+int scanDataAmountOfPeople(void)
 {
-   printf("filename is SingleMadplan: ");
-   scanf("%s", filename);
+   int amountOfPeople = 0;
+   
+   do
+   {
+      printf("Antal personer: ");
+      scanf("%d", &amountOfPeople);
+   } while (!(amountOfPeople > 0));
+   
+   return amountOfPeople;
+}
+
+/* scans for which file you want to access, and puts into a char array that is called filnavn*/
+char* scanDatafilename (char filename[])
+{
+   int i;
+   int daysInAWeek = 7;
+   int inputTruthValue = 0;
+   char weekdays[7][8] = {"Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Loerdag", "Soendag"};
+
+   do
+   {
+      printf("Hvilken dag vil du se madplan for, foerste bogstav skal vaere caps: ");
+      scanf("%s", filename);
+      fflush(stdin);
+      for(i = 0; i < daysInAWeek; ++i)
+      {
+         if(strcmp(filename, weekdays[i]) == 0)
+         {
+            inputTruthValue = 1;
+         }
+      }
+   } while (inputTruthValue == 0);
+  
    return filename;
 }
 
@@ -127,6 +117,7 @@ void instructions (void)
 {
    printf("-------Den Digitale Madplan-------\n");
    printf("Alle madplaner gaelder for 7 dage,\nog inkludere inkoebsliste, opskrifter.\n\n");
+   printf("Brug aa, ae og oe i stedet for danske bogstaver.\n");
    printf("Vaelg antal personer der skal foelge madplanen.\n");
    printf("Hvilken madplan vil du bruge, ud fra de givne valg.\n");
    printf("Ved at trykke paa (i) vil indkoebslisten blive vist.\n");
@@ -134,92 +125,93 @@ void instructions (void)
    printf("I hjaelp\n\n");
 }
 
-/* Vælger ens madplan */
+/* Vælger type af madplan */
 int mealplanChooser (void)
 {
-   int valg;
+   int choice;
    printf("Vaelg en af de nedstaeende madplaner\n");
    printf("1) Den normale\n");
    printf("2) Mindre koed\n");
    printf("3) indkoebsliste\n");
    printf("4) Afslut menu\n"); 
 
-   scanDataValg(&valg); // Du er så smart kure :O
+   choice = scanDataChooser();
 
    /*Finding which choice was asked for (my style of using brackets may be different than yours */
-   if (valg == 1)
+   if (choice == 1)
    {
       // Normal madplan
       printf("Normal Madplan\n");
    }
-   else if (valg == 2)
+   else if (choice == 2)
    {
       // Mindre kød
       printf("Madplan med mindre koed\n");
    }
-   else if (valg == 3)
+   else if (choice == 3)
    {
 
-      printf("Indkoebslist\n");
+      printf("Indkoebsliste\n");
    }
-   else if (valg == 4)
+   else if (choice == 4)
    {
       printf("Afslut menu!\n");
-      EXIT_SUCCESS;
+      exit(0);
    }
 
-   return valg;
+   return choice;
 }
 
 /* This function reads the ingrediens and puts it into a double and a string,
  * so that we can change the value of how much a person should use ;D
  * From the '$' in the file to the int 69420 appears, we read the ingredient volume and ingredient name */
 
- int readDataIngredienser (structIngrediens ingrediens[], char filename[], structRetter retter[]) 
+ int readDataIngredients (structIngrediens ingrediens[], char filename[], structMeal meals[]) 
  {
    int checker = 0, i = 0;
-   strcat(filename, ".txt"); /* f.eks filename = kodboller + .txt, dette vil give filename som kodboller, og dette kan vi bruge til opne filen med */
-   FILE *opskrifter;
-   if (opskrifter == NULL)
+   strcat(filename, ".txt"); /* f.eks filnavn = kodboller + .txt, dette vil give filnavn som kodboller, og dette kan vi bruge til opne filen med */
+   FILE *recipe;
+   
+   if (recipe == NULL)
    {
       printf("The file name entered isn't viable. Please try again");
    }
 
-   opskrifter = fopen(filename, "r"); 
-   fscanf(opskrifter, "%[^;]; %[^;]; %[^;]; %[^;];", &retter[i].rettensNavn, &retter[i].antalPersoner, &retter[i].forberedningsTid, &retter[i].ingredienser);
+   recipe = fopen(filename, "r"); 
+   fscanf(recipe, "%[^;]; %[^;]; %[^;]; %[^;];", &meals[i].mealName, &meals[i].amountOfPeople, &meals[i].preparationTime, &meals[i].ingredients);
+   
    if (strcmp(filename,"Soendag.txt")!=0){
       while (checker != 69420){
-      fscanf(opskrifter, "%lf %[^:]: %d",&ingrediens[i].volume, &ingrediens[i].navn, &checker);
+      fscanf(recipe, "%lf %[^:]: %d",&ingrediens[i].volume, &ingrediens[i].name, &checker);
       ++i;
     }
    
-   fscanf(opskrifter,"%[^&]&", &retter[1].fremgangsMaade);
+   fscanf(recipe,"%[^&]&", &meals[1].procedure);
    }
-   fclose(opskrifter);
+   fclose(recipe);
 
    return i;
  }
 
-<<<<<<< HEAD
-void gangerOp(int antalPersoner, structIngrediens ingrediens[], int antalIngrediens) 
+/*Funktion der ganger mængden af ingredienser op med det valgte antal af personer*/
+void multiplier(int amountOfPeople, structIngrediens ingrediens[], int amountOfIngredients) 
 {
    int i; 
-   for (i = 0; i < antalIngrediens; i++)
-=======
-void gangerOp(int antalPersoner, singrediens ingrediens[], int AntalIgredienser) 
-{
-   int i; 
-   for (i = 0; i < AntalIgredienser; i++)
->>>>>>> refs/remotes/origin/master
+   for (i = 0; i < amountOfIngredients; i++)
    {
-      ingrediens[i].volume = antalPersoner * ingrediens[i].volume; 
-   }
-     
+      ingrediens[i].volume = amountOfPeople * ingrediens[i].volume; 
+   } 
 }
 
-/*int jumpAround(){
+/*Function der printer */
 
-
-
-
-}*/
+void loopPrint(structIngrediens ingrediens[], structMeal meals[],int amountOfPeople, char filename[], int amountOfIngredients){
+   int i;
+   printf("\n%s \n%s %d \n%s \n%s \n",meals[0].mealName,meals[0].amountOfPeople, amountOfPeople, meals[0].preparationTime, meals[0].ingredients);
+   for (i = 0; i < amountOfIngredients; i++)
+   {
+      printf("%5.2lf %s\n", ingrediens[i].volume, ingrediens[i].name);
+   }
+   if(strcmp(filename,"soendag.txt")!=0)
+      printf("%s\n",meals[1].procedure);   
+}
