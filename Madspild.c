@@ -3,6 +3,8 @@
 #include <string.h>
 #include <dirent.h>
 
+#include "ScanData.h"
+
 #define MAX_NAME_LGT 500
 //tror jeg kommer til at skift hvordan ingrediens virker fordi jeg må nok få fat type af volume, får at kunne gøre indkøbliste korrekt
 
@@ -28,86 +30,90 @@ typedef struct structMealDeclare
 
 /* Prototypes */
 // skift navn på readDataIngredients til noget andet
-int readDataIngredients (structIngrediens ingrediens[],char filename[], structMeal meals[]);
-void multiplier (int amountOfPeople, structIngrediens ingrediens[], int amountOfIngredients);
-void instructions (void);
-int mealplanChooser (void);
-int scanDataBetween (int x, int y);
+int help(void);
+int choiceChooser (void);
 int scanDataAmountOfPeople (void);
+int scanDataBetween (int HigestOption, int lowestOption);
+int readDataIngredients (structIngrediens ingrediens[], char filename[], structMeal meals[]);
+int encodeFilename (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], 
+                     char filename[], int choice, structIngrediens ingrediens[], structMeal meals[]);
 char* scanDatafilename (char filename[], structFilenames allFiles[]);
-void loopPrint(structIngrediens ingrediens[], structMeal meals[], int amountOfPeople, char filename[], int amountOfIngredients);
+void instructions (void);
+void navFunction(int destination);
 void findingNormalTxt(structFilenames normalFilenames[]);
-void findingMindreKoedtxt(structFilenames mindreKoedFilenames[]);
-void navFunction (int destination);
-int help (void);
+void findingMindreKoedTxt(structFilenames mindreKoedFilenames[]);
+void multiplier (int amountOfPeople, structIngrediens ingrediens[], int amountOfIngredients);
+void loopPrint(structIngrediens ingrediens[], structMeal meals[], int amountOfPeople, char filename[], int amountOfIngredients);
 
-int main (void)
+void main (void)
 {
    /*Declaring variables used in main*/
-   int i;
-   int test;
-   int choice;
-   int amountOfPeople;
+   char filename[30];
    int amountOfIngredients;
-   char filename[25];
+   int amountOfPeople;
+   int choice;
 
    structMeal meals[4];
-   structIngrediens ingrediens[25] = {0,""};  /* Declaring 0 to int volume and inserting empty string(char name), which is default setting */
-   structFilenames normalFilenames[20] = {"",0};
-   structFilenames mindrekoedFilenames[20] = {"",0};
+   structIngrediens ingrediens[25] = {{0,""}};  /* Declaring 0 to int volume and inserting empty string(char name), which is default setting */
+   structFilenames normalFilenames[20] = {{"",0}};
+   structFilenames mindrekoedFilenames[20] = {{"",0}};
    
    /*Functions scanning directories for files*/
    // De her er træls!
    findingNormalTxt(normalFilenames);
-   findingMindreKoedtxt(mindrekoedFilenames);
-
+   findingMindreKoedTxt(mindrekoedFilenames);
+   
    /*Function printing user-instructions as output*/
    instructions();
    
    amountOfPeople = scanDataAmountOfPeople();
    
-   choice = mealplanChooser();
+   choice = choiceChooser();
+   amountOfIngredients = encodeFilename(normalFilenames, mindrekoedFilenames, filename, choice, ingrediens,meals);
    
-   // Move to function.
-   if (choice == 1)
-      strcpy(filename,scanDatafilename(filename, normalFilenames));
-   else if (choice == 2)
-      strcpy(filename,scanDatafilename(filename, mindrekoedFilenames));
-
-   printf("%s", filename); // Test
-
-   amountOfIngredients = readDataIngredients(ingrediens, filename, meals);
+  // amountOfIngredients = readDataIngredients(ingrediens, filename, meals);
    multiplier(amountOfPeople, ingrediens, amountOfIngredients);
    loopPrint(ingrediens, meals, amountOfPeople, filename, amountOfIngredients);
+   //chdir("..");
+   exit(0);
+}
+
+int encodeFilename (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], char filename[], 
+                  int choice, structIngrediens ingrediens[], structMeal meals[])
+{
+   if (choice == 1){
+      strcpy(filename,scanDatafilename(filename, normalFilenames));
+      chdir("recipe");
+      return readDataIngredients(ingrediens, filename, meals);
+     
+   }
+   else if (choice == 2){
+      strcpy(filename,scanDatafilename(filename, mindreKoedFilenames));
+      chdir("mindrekoedrecipe");
+      return readDataIngredients(ingrediens, filename, meals);
+   }
    return 0;
 }
 
-void encodeFilename (char * normalFilenames, char* mindreKoedFilenames)
-{
-   // Place to move the strcpy to. Gøres når Magni er done med dem
-}
-
-int scanDataBetween (int x, int y)
+int scanDataBetween (int highestOption, int lowestOption)
 {
    int choice = 0;
 
    do
    {
-      if ((choice >= x || choice < y))
+      if ((choice >= highestOption || choice < lowestOption))
       {
          printf("Dit valg passer ikke med de givne muligheder ");
          fflush(stdin);
          choice = -1;
       }
-      printf("Intast valg: ");   
+      printf("Indtast valg: ");   
       scanf("%d", &choice);
       printf("\n");
-   } while ((choice >= x || choice < y));
+   } while ((choice >= highestOption || choice < lowestOption));
    
    return choice;
 }
-
-
 
 int scanDataAmountOfPeople(void)
 {
@@ -128,7 +134,6 @@ char* scanDatafilename (char filename[], structFilenames allfilenames[])
 {
    int i;
    int inputTruthValue = 0;
-   //char weekdays[7][8] = {"Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Loerdag", "Soendag"};
 
    /* Do-while-loop scanning for given day of the week, comparing chosen weekday
     * (declared in weekdays string array) with filename, returning filename */
@@ -160,11 +165,11 @@ void instructions (void)
    printf("Hvilken madplan vil du bruge, ud fra de givne valg.\n\n");
    printf("Ved at trykke paa (i) vil indkoebslisten blive vist.\n\n");
    printf("Hvis du har problemmer eller har valgt forkert tryk paa (h) for hjaelp.\n\n");
-   printf("I hjaelp, vil der vaere mulighed for at gaa tilbage til starten, eller gaa til det forige skridt.\n");
+   printf("I hjaelp, vil der vaere mulighed for at gaa tilbage til starten, eller gaa til det forrige skridt.\n\n");
 }
 
 /* Choosing type of mealplan */
-int mealplanChooser (void)
+int choiceChooser (void)
 {
    int choice;
    int destinations;
@@ -175,7 +180,7 @@ int mealplanChooser (void)
    printf("3) Hjaelp!\n");
    printf("4) Afslut menu\n\n"); 
 
-   choice = scanDataBetween(4, 0);
+   choice = scanDataBetween(5, 0);
 
    /*Finding which choice was asked for (my style of using brackets may be different than yours) */
    switch (choice)
@@ -189,7 +194,7 @@ int mealplanChooser (void)
    case 3:
       destinations = help();
       navFunction(destinations);
-      mealplanChooser();
+      choice = choiceChooser();
       break;
    case 4:
       exit(0);
@@ -201,10 +206,9 @@ int mealplanChooser (void)
    return choice;
 }
 
-/* This function reads the ingrediens and puts it into a double and a string,
- * so that we can change the value of how much a person should use ;D
- * From the '$' in the file to the int 69420 appears, we read the ingredient volume and ingredient name */
-
+/* This function reads the ingredients and puts value into a double and ingredient-name into a string,
+ * so that we can change the value of how much a person should use
+ * From the '$' in txt-file to the int -1 appears, we  read the ingredient volume and ingredient name */
 int readDataIngredients (structIngrediens ingrediens[], char filename[], structMeal meals[]) 
 {
    int checker = 0, i = 0;
@@ -220,11 +224,10 @@ int readDataIngredients (structIngrediens ingrediens[], char filename[], structM
    }
    
    fscanf(recipe, "%[^;]; %[^;]; %[^;]; %[^;];", meals[i].mealName, meals[i].amountOfPeople, meals[i].preparationTime, meals[i].ingredients);
-
    
-   if (strcmp(filename,"Soendag.txt") != 0)
+   if (strcmp(filename,"Soendag.txt") != 0 && strcmp(filename,"SoendagMindreKoed.txt") !=0 )
    {
-      while (checker != 69420)
+      while (checker != -1)
       {
          fscanf(recipe, "%lf %[^:]: %d", &ingrediens[i].volume, ingrediens[i].name, &checker);
          ++i;
@@ -238,8 +241,6 @@ int readDataIngredients (structIngrediens ingrediens[], char filename[], structM
 }
 
 /*Function multiplying the chosen amount of people, with the amount of ingredients.*/
-
-/*Function multiplying the chosen amount of people, with the amount of ingredients.*/
 void multiplier(int amountOfPeople, structIngrediens ingrediens[], int amountOfIngredients) 
 {
    int i; 
@@ -250,7 +251,6 @@ void multiplier(int amountOfPeople, structIngrediens ingrediens[], int amountOfI
 }
 
 /*Function printing Meal Name, Amount of People, Preparation time and ingredients in a for-loop iterating over the total amount of ingredients */
-
 void loopPrint(structIngrediens ingrediens[], structMeal meals[], int amountOfPeople, char filename[], int amountOfIngredients)
 {
    int i;
@@ -262,19 +262,15 @@ void loopPrint(structIngrediens ingrediens[], structMeal meals[], int amountOfPe
       printf("%5.2lf %s\n", ingrediens[i].volume, ingrediens[i].name);
    }
    
-   if(strcmp(filename,"soendag.txt") != 0)
+   if(strcmp(filename,"soendag.txt") != 0 && strcmp(filename,"SoendagMindrekoed.txt") != 0)
       printf("%s\n", meals[1].procedure);    
 }
 
-
 /*Function reading different files in given directory in a while loop for every file*/
-
 void findingNormalTxt(structFilenames filename[])
 {
    struct dirent* recipe;
    int i = 0;
-   char localNormalFilenames[20][20];
-
    
    DIR* dr = opendir("recipe");
 
@@ -289,20 +285,16 @@ void findingNormalTxt(structFilenames filename[])
       if (strcmp(recipe->d_name, ".")!=0 && strcmp(recipe->d_name, "..") !=0)
       {
          strncpy(filename[i].filenames, recipe->d_name, strlen(recipe->d_name)-4);
-         //printf("%s == %s\n",recipe->d_name, filename[i].filenames); 
          i++;
          ++filename[0].amountOfFiles;
       }
    }
 }
 
-
-
-void findingMindreKoedtxt(structFilenames mindreKoedFilename[])
+void findingMindreKoedTxt(structFilenames mindreKoedFilename[])
 {
    struct dirent *recipe;
    int i = 0;
-   char localmindreKoedFilenames[20][20];
 
    DIR *dr = opendir("mindrekoedrecipe");
 
@@ -317,7 +309,6 @@ void findingMindreKoedtxt(structFilenames mindreKoedFilename[])
       if (strcmp(recipe->d_name,".")!=0 && strcmp(recipe->d_name,"..") !=0)
       { 
          strncpy(mindreKoedFilename[i].filenames, recipe->d_name, strlen(recipe->d_name)-4);
-         //printf("%s == %s\n",recipe->d_name, mindreKoedFilename[i].filenames); 
          ++i;
          mindreKoedFilename[0].amountOfFiles++;
       }
@@ -326,8 +317,6 @@ void findingMindreKoedtxt(structFilenames mindreKoedFilename[])
 
 int help (void)
 {
-   int destination;
-
    printf("---------------Hjaelp---------------\n\n");
    printf("Mulige funktioner du kan tilgaa her\n\n");
    printf("er: instruktioner, start menu og afslut menu.\n\n");
@@ -335,9 +324,8 @@ int help (void)
    printf("Start menu tager dig helt til bage til starten.\n\n");
 
    printf("1) Instruktioner\n2) Start menu\n");
-   destination = scanDataBetween(2, 0);
 
-   return destination;
+   return scanDataBetween(3, 0);
 }
 
 void navFunction (int destination)
