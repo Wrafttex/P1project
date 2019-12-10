@@ -7,7 +7,7 @@ Ingredienser: ;
 3.0 skive. Iceberg: 220
 0.25 pk. Hamburgerryg: 220
 0.5 pk. Bacon: 220
-1.0 sjat. Dressing: 69420
+1.0 sjat. Dressing: -1
 Fremgangsmaade:
 Tomater skaeres i skiver
 Broedet ristet let og skaeres derefter i trekanter

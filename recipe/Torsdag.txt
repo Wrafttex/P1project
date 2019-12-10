@@ -8,5 +8,5 @@ Ingredienser:;
 1 Hamburgerryg: 220
 1 Agurk: 220
 1 Tomat: 220
-1 Iceberg: 69420
+1 Iceberg: -1
 Ingen fremgangmaade:&

@@ -10,25 +10,25 @@ Ingredienser:;
 0.25 tsk. salt: 11
 1.0 Fyld: 11
 0.5 ps. Revet ost (mozzarella el. cheddar): 11
-0.125 pk. Pepperoni: 11
+0.125 pk. Champingoner: 11
 0.125 skive. Iceberg: 11
 0.125 skive. Agurk: 11
 1.0 skive. Tomater: 11
+0.5 pakke pepperoni: 11
 1.0 shat. Dressing: 11
 1.0 Pizzasauce: 11
 0.5 ds. hk. tomater: 11
 0.25 tsk. Salt: 11
 1.0 tsk. Toerret oregano: 11
 0.5 tsk. Sukker: 11
-1.0 fed Hvidloeg: 69420
-Fremgangsmaade;
+1.0 fed Hvidloeg: -1
+Fremgangsmaade:
 Mel, vand, olie, gaer og lidt salt blandes sammen og aeltes til en bolle.
 Dejen skal haeve i en halv time
 Taend ovnen paa 225 grader.
 Rul dejen ud paa bordet og laeg den over paa en bradepande
 Hakkede tomater, hvidloeg, oregano, sukker og salt blendes til pizzasauce og haeldes over dejen
 Halvdelen af osten fordeles paa pizzabunden.
-Hamburgerryg eller pepperoni fordeles som det naeste – resten af osten som det sidste.
 Pizzaen skal have ca. 20 min. i ovnen paa 225 grader eller efter hvilken sproedhed man oensker.
 Salaten skaeres som oensket til at komme ovenpaa pizzaen
 Dressing puttes paa ved servering sammen med salaten. &

@@ -1,15 +1,17 @@
-Clubsandwich m. hamburgerryg og bacon;
+Clubsandwich m. hamburgerryg og salat;
 Antal personer:;
 Tidsforbrug: 15 minutter;
-Ingredienser: ;
+Ingredienser:;
 3.0 stk. Sandwichbroed: 200
 3.0 stk. Cherrytomater: 220
 3.0 skive. Iceberg: 220
-0.25 pk. Hamburgerryg: 220
-0.5 pk. Bacon: 220
-1.0 sjat. Dressing: 69420
+1.0 skive hamburgerryg: 220
+1.0 agurk: 220
+0.5 peberfrugt: 220
+1.0 sjat. Dressing: -1
 Fremgangsmaade:
 Tomater skaeres i skiver
+Agurk skaeres i skiver
 Broedet ristet let og skaeres derefter i trekanter
 Broeddene smoerres med dressing
 Bacon steges sproedt paa panden.

@@ -8,7 +8,7 @@ Ingredienser:;
 0.5 skiver. Porre: 220
 0.5 skiver Roed peber: 220
 100 g. Groenne boenner: 220
-0.5 ps. Revet mozzarella: 69420
+0.5 ps. Revet mozzarella: -1
 Basislager: 
 1 Roedloeg
 Salt + peber
