@@ -1,4 +1,4 @@
-Ugens rester;
+Ugens reser;
 Antal personer:;
 Tidsforbrug: varierende:;
 Ingredienser: Ugens restedag - alt godt fra ugen;
