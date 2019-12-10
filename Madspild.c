@@ -115,48 +115,43 @@ char* scanDatafilename (char filename[])
 /* Instruktioner for brug af madplanen */
 void instructions (void) 
 {
-   printf("-------Den Digitale Madplan-------\n");
-   printf("Alle madplaner gaelder for 7 dage,\nog inkludere inkoebsliste, opskrifter.\n\n");
-   printf("Brug aa, ae og oe i stedet for danske bogstaver.\n");
-   printf("Vaelg antal personer der skal foelge madplanen.\n");
-   printf("Hvilken madplan vil du bruge, ud fra de givne valg.\n");
-   printf("Ved at trykke paa (i) vil indkoebslisten blive vist.\n");
-   printf("Hvis du har problemmer eller har valgt forkert tryk paa (h) for hjaelp.\n");
-   printf("I hjaelp\n\n");
+   printf("-------------------------Den Digitale Madplan-------------------------\n\n");
+   printf("Alle madplaner gaelder for 7 dage,og inkludere inkoebsliste, opskrifter.\n\n");
+   printf("Brug aa, ae og oe i stedet for danske bogstaver.\n\n");
+   printf("Vaelg antal personer der skal foelge madplanen.\n\n");
+   printf("Hvilken madplan vil du bruge, ud fra de givne valg.\n\n");
+   printf("Ved at trykke paa (i) vil indkoebslisten blive vist.\n\n");
+   printf("Hvis du har problemmer eller har valgt forkert tryk paa (h) for hjaelp.\n\n");
+   printf("I hjaelp, vil der vaere mulighed for at gaa tilbage til starten, eller gaa til det forige skridt.\n");
 }
 
 /* Vælger type af madplan */
 int mealplanChooser (void)
 {
    int choice;
+
    printf("Vaelg en af de nedstaeende madplaner\n");
-   printf("1) Den normale\n");
+   printf("1) Standart madplan\n");
    printf("2) Mindre koed\n");
-   printf("3) indkoebsliste\n");
-   printf("4) Afslut menu\n"); 
+   printf("3) Afslut menu\n\n"); 
 
    choice = scanDataChooser();
 
-   /*Finding which choice was asked for (my style of using brackets may be different than yours */
-   if (choice == 1)
+   /*Finding which choice was asked for (my style of using brackets may be different than yours) */
+   switch (choice)
    {
-      // Normal madplan
-      printf("Normal Madplan\n");
-   }
-   else if (choice == 2)
-   {
-      // Mindre kød
-      printf("Madplan med mindre koed\n");
-   }
-   else if (choice == 3)
-   {
-
-      printf("Indkoebsliste\n");
-   }
-   else if (choice == 4)
-   {
-      printf("Afslut menu!\n");
+   case 1:
+      printf("Du har valgt den normal madplan.\n\n");
+      break;
+   case 2:
+      printf("Du har valgt den madplan med mindre koed.\n\n");
+      break;
+   case 3:
+      printf("Afslut menu!\n\n");
       exit(0);
+      break;
+   default:
+      break;
    }
 
    return choice;
@@ -166,32 +161,38 @@ int mealplanChooser (void)
  * so that we can change the value of how much a person should use ;D
  * From the '$' in the file to the int 69420 appears, we read the ingredient volume and ingredient name */
 
- int readDataIngredients (structIngrediens ingrediens[], char filename[], structMeal meals[]) 
- {
+int readDataIngredients (structIngrediens ingrediens[], char filename[], structMeal meals[]) 
+{
    int checker = 0, i = 0;
-   strcat(filename, ".txt"); /* f.eks filnavn = kodboller + .txt, dette vil give filnavn som kodboller, og dette kan vi bruge til opne filen med */
+   strcat(filename, ".txt"); 
    FILE *recipe;
-   
+
+   recipe = fopen(filename, "r"); 
+
    if (recipe == NULL)
    {
       printf("The file name entered isn't viable. Please try again");
+      EXIT_FAILURE;
    }
+   
+   fscanf(recipe, "%[^;]; %[^;]; %[^;]; %[^;];", meals[i].mealName, meals[i].amountOfPeople, meals[i].preparationTime, meals[i].ingredients);
 
-   recipe = fopen(filename, "r"); 
-   fscanf(recipe, "%[^;]; %[^;]; %[^;]; %[^;];", &meals[i].mealName, &meals[i].amountOfPeople, &meals[i].preparationTime, &meals[i].ingredients);
    
-   if (strcmp(filename,"Soendag.txt")!=0){
-      while (checker != 69420){
-      fscanf(recipe, "%lf %[^:]: %d",&ingrediens[i].volume, &ingrediens[i].name, &checker);
-      ++i;
-    }
+   if (strcmp(filename,"Soendag.txt") != 0)
+   {
+      while (checker != 69420)
+      {
+         fscanf(recipe, "%lf %[^:]: %d", &ingrediens[i].volume, ingrediens[i].name, &checker);
+         ++i;
+      }
    
-   fscanf(recipe,"%[^&]&", &meals[1].procedure);
+      fscanf(recipe,"%[^&]&", meals[1].procedure);
    }
    fclose(recipe);
 
    return i;
- }
+}
+
 
 /*Funktion der ganger mængden af ingredienser op med det valgte antal af personer*/
 void multiplier(int amountOfPeople, structIngrediens ingrediens[], int amountOfIngredients) 
@@ -214,4 +215,9 @@ void loopPrint(structIngrediens ingrediens[], structMeal meals[],int amountOfPeo
    }
    if(strcmp(filename,"soendag.txt")!=0)
       printf("%s\n",meals[1].procedure);   
+}
+
+void navFunvtion (int destination)
+{
+   
 }
