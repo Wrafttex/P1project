@@ -6,7 +6,7 @@ Ingredienser:;
 1 pose Rodfrugter(1 kg): 220
 1 sjat. Bearnaisesauce: 220
 0.5 kylling: 220
-1 skive. Iceberg: 220
+1 skiver. Iceberg: 220
 3 stk. Roed peber: 220
 2 stk. Agurk: 220
 2 stk. Guleroedder: -1

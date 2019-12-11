@@ -6,18 +6,19 @@ Ingredienser:;
 300.0 g. mel: 1
 1.5 dl. vand: 1
 0.25 dl. olie: 1
-0.25 tsk. salt: 1
-0.5 ps. Revet ost (mozzarella el. cheddar): 1
+100.00 g. Revet mozzarella: 1
 0.125 pk. Pepperoni: 1
-0.125 skive. Iceberg: 1
+0.125 skiver. Iceberg: 1
 0.125 skive. Agurk: 1
 1.0 skive. Tomater: 1
 1.0 spsk. Dressing: 1
 0.5 ds. hk. tomater: 1
-0.25 tsk. Salt: 1
 1.0 tsk. Toerret oregano: 1
-0.5 tsk. Sukker: 1
 1.0 stk. fed Hvidloeg: -1
+Basislager:
+0.5 tsk. Sukker til pizzasauce:
+0.25 tsk. Salt til pizzabunden:
+0.25 tsk. Salt til pizzasauce:
 Fremgangsmaade:
 Mel, vand, olie, gaer og lidt salt blandes sammen og aeltes til en bolle.
 Dejen skal haeve i en halv time

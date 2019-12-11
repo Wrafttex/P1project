@@ -3,7 +3,7 @@
 #include <string.h>
 #include <dirent.h>
 
-#include "ScanData.h"
+//#include "ScanData.h"
 
 #define MAX_NAME_LGT 500
 //tror jeg kommer til at skift hvordan ingrediens virker fordi jeg må nok få fat type af volume, får at kunne gøre indkøbliste korrekt
@@ -35,6 +35,8 @@ int choiceChooser (void);
 int scanDataAmountOfPeople (void);
 int scanDataBetween (int HigestOption, int lowestOption);
 int readDataIngredients (structIngrediens ingrediens[], char filename[], structMeal meals[]);
+int shoppingList(structIngrediens ingrediens[], char Filenames[]);
+int forLoopShoppingList(structIngrediens ingrediens[], structFilenames allFilenames[]);
 int encodeFilename (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], 
                      char filename[], int choice, structIngrediens ingrediens[], structMeal meals[]);
 char* scanDatafilename (char filename[], structFilenames allFiles[]);
@@ -44,6 +46,7 @@ void findingNormalTxt(structFilenames normalFilenames[]);
 void findingMindreKoedTxt(structFilenames mindreKoedFilenames[]);
 void multiplier (int amountOfPeople, structIngrediens ingrediens[], int amountOfIngredients);
 void loopPrint(structIngrediens ingrediens[], structMeal meals[], int amountOfPeople, char filename[], int amountOfIngredients);
+void printShoppingList(structIngrediens ingrediens[], int amountOfIngredients);
 
 void main (void)
 {
@@ -54,7 +57,7 @@ void main (void)
    int choice;
 
    structMeal meals[4];
-   structIngrediens ingrediens[25] = {{0,""}};  /* Declaring 0 to int volume and inserting empty string(char name), which is default setting */
+   structIngrediens ingrediens[150] = {{0,""}};  /* Declaring 0 to int volume and inserting empty string(char name), which is default setting */
    structFilenames normalFilenames[20] = {{"",0}};
    structFilenames mindrekoedFilenames[20] = {{"",0}};
    
@@ -81,15 +84,21 @@ void main (void)
 int encodeFilename (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], char filename[], 
                   int choice, structIngrediens ingrediens[], structMeal meals[])
 {
+   int tester;
    if (choice == 1){
       strcpy(filename,scanDatafilename(filename, normalFilenames));
       chdir("recipe");
+      tester =forLoopShoppingList(ingrediens,normalFilenames);
+      printShoppingList(ingrediens, tester);
+
       return readDataIngredients(ingrediens, filename, meals);
      
    }
    else if (choice == 2){
       strcpy(filename,scanDatafilename(filename, mindreKoedFilenames));
       chdir("mindrekoedrecipe");
+      tester =forLoopShoppingList(ingrediens,mindreKoedFilenames);
+      printShoppingList(ingrediens, tester);
       return readDataIngredients(ingrediens, filename, meals);
    }
    return 0;
@@ -220,7 +229,7 @@ int readDataIngredients (structIngrediens ingrediens[], char filename[], structM
    if (recipe == NULL)
    {
       printf("The file name entered isn't viable. Please try again");
-      EXIT_FAILURE;
+      exit(-1);
    }
    
    fscanf(recipe, "%[^;]; %[^;]; %[^;]; %[^;];", meals[i].mealName, meals[i].amountOfPeople, meals[i].preparationTime, meals[i].ingredients);
@@ -341,4 +350,73 @@ void navFunction (int destination)
    default:
       break;
    }
+}
+
+int forLoopShoppingList(structIngrediens ingrediens[], structFilenames allFilenames[]){
+   int i;
+   int amountOfIngredients = 0;
+   for (i = 0; i<allFilenames[0].amountOfFiles; i++){
+      printf("\n \n%d\n \n",amountOfIngredients);
+      amountOfIngredients += shoppingList(ingrediens,allFilenames[i].filenames);
+   }
+   return amountOfIngredients;
+}
+
+int shoppingList(structIngrediens ingrediens[], char filename[]){
+   int checker = 0;
+   int index = 0;
+   int amountOfIngrediens = 0;
+   FILE *recipe;
+   double localVolume = 0;
+   char localIngrediensName[400] = ""; 
+   strcat(filename, ".txt");
+   recipe = fopen(filename, "r");
+   if (recipe == NULL)
+   {
+      printf("The file name entered isn't viable. Please try again");
+      EXIT_FAILURE;
+   }
+
+   fscanf(recipe, "%*[^;]; %*[^;]; %*[^;]; %*[^;];");
+   if (strcmp(filename,"Soendag.txt") != 0 && strcmp(filename,"SoendagMindreKoed.txt") !=0 )
+   {
+      while (checker != -1){
+          printf("%s",filename);
+         index = -1;
+         printf("test %d\n", amountOfIngrediens);
+         fscanf(recipe, "%lf %[^:]: %d", &localVolume, &localIngrediensName, &checker);
+         amountOfIngrediens++;
+         do{
+            index++;
+            if (strcmp(ingrediens[index].name, localIngrediensName) == 0){
+               ingrediens[index].volume += localVolume;
+               amountOfIngrediens--;
+            }
+
+            
+            else if (strcmp(ingrediens[index].name, "") == 0){
+               strcpy(ingrediens[index].name, localIngrediensName);
+               ingrediens[index].volume += localVolume;
+            }
+            else {}
+           // printf("%f %s... %f %s (%d) |%d| <%d>\n", ingrediens[index].volume, ingrediens[index].name, localVolume, localIngrediensName, index,strcmp(ingrediens[index].name, localIngrediensName), checker );
+            
+         }while(strcmp(ingrediens[index].name, localIngrediensName) != 0);
+
+      
+      }
+
+
+   }
+  
+   fclose(recipe);
+    
+   return amountOfIngrediens;
+}
+
+void printShoppingList(structIngrediens ingrediens[], int amountOfingredients){
+   multiplier(1,ingrediens,amountOfingredients);
+   int i;
+   for (i = 0; i < amountOfingredients; i++)
+   printf("%5.3f %s.... %d %d\n", ingrediens[i].volume, ingrediens[i].name , i , amountOfingredients);
 }

@@ -7,7 +7,6 @@ Ingredienser:;
 300.0 gram mel: 11
 1.5 dl. vand: 11
 0.25 dl. olie: 11
-0.25 tsk. salt: 11
 1.0 Fyld: 11
 0.5 ps. Revet ost (mozzarella el. cheddar): 11
 0.125 pk. Champingoner: 11
@@ -18,10 +17,12 @@ Ingredienser:;
 1.0 shat. Dressing: 11
 1.0 Pizzasauce: 11
 0.5 ds. hk. tomater: 11
-0.25 tsk. Salt: 11
 1.0 tsk. Toerret oregano: 11
-0.5 tsk. Sukker: 11
 1.0 fed Hvidloeg: -1
+Basislager:
+0.5 tsk. Sukker til pizzasauce:
+0.25 tsk. Salt til pizzabunden:
+0.25 tsk. Salt til pizzasauce:
 Fremgangsmaade:
 Mel, vand, olie, gaer og lidt salt blandes sammen og aeltes til en bolle.
 Dejen skal haeve i en halv time
