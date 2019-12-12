@@ -3,11 +3,8 @@
 #include <string.h>
 #include <dirent.h>
 
-<<<<<<< HEAD
-=======
 //#include "ScanData.h"
 
->>>>>>> refs/remotes/origin/master
 #define MAX_NAME_LGT 500
 //tror jeg kommer til at skift hvordan ingrediens virker fordi jeg må nok få fat type af volume, får at kunne gøre indkøbliste korrekt
 
@@ -45,28 +42,28 @@ int readDataIngredients (structIngrediens ingrediens[], char filename[], structM
 int shoppingList(structIngrediens ingrediens[], char Filenames[]);
 int forLoopShoppingList(structIngrediens ingrediens[], structFilenames allFilenames[]);
 int encodeFilename (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], 
-                     char filename[], int choice, structIngrediens ingrediens[], structMeal meals[]);
+                     char filename[], int choice, structIngrediens ingrediens[], structMeal meals[], int amountOfPeople);
 int userChoice (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], structDishName dishes[]);
 char* scanDatafilename (char filename[], structFilenames allFiles[]);
 void instructions (void);
 void navFunction(int destination);
-void mealPlan(int firstTime, int returnToPreviousStep);
+void mealPlan(void);
 void findingNormalTxt(structFilenames normalFilenames[]);
 void findingMindreKoedTxt(structFilenames mindreKoedFilenames[]);
 void mealPlanOverview (structDishName dishes[], structFilenames normalFilenames[]);
 void readDataDishNames (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], structDishName dishes[], int choice);
 void multiplier (int amountOfPeople, structIngrediens ingrediens[], int amountOfIngredients);
 void loopPrint(structIngrediens ingrediens[], structMeal meals[], int amountOfPeople, char filename[], int amountOfIngredients);
-void printShoppingList(structIngrediens ingrediens[], int amountOfIngredients);
+void printShoppingList(structIngrediens ingrediens[], int amountOfIngredients, int amountOfPeople);
 
 int main (void)
 {
-   mealPlan(1, 1);
+   mealPlan();
 
    return 0;
 }
 
-void mealPlan (int firstTime, int returnToPreviousStep)
+void mealPlan (void)
 {
    /*Declaring variables used in main*/
    char filename[30];
@@ -75,33 +72,27 @@ void mealPlan (int firstTime, int returnToPreviousStep)
    int choice;
 
    structMeal meals[4];
-<<<<<<< HEAD
    structDishName dishes[7] = {{""}};
-   structIngrediens ingrediens[25] = {{0,""}};  /* Declaring 0 to int volume and inserting empty string(char name), which is default setting */
-=======
    structIngrediens ingrediens[150] = {{0,""}};  /* Declaring 0 to int volume and inserting empty string(char name), which is default setting */
->>>>>>> refs/remotes/origin/master
    structFilenames normalFilenames[20] = {{"",0}};
    structFilenames mindrekoedFilenames[20] = {{"",0}};
 
    /*Functions scanning directories for files*/
-   if (firstTime)
-   {
-      findingNormalTxt(normalFilenames);
-      findingMindreKoedTxt(mindrekoedFilenames);
-   }
+
+   findingNormalTxt(normalFilenames);
+   findingMindreKoedTxt(mindrekoedFilenames);
+   
  
    /*Function printing user-instructions as output*/
-   if (returnToPreviousStep)
-      instructions();
+   instructions();
 
-   if (returnToPreviousStep)
-      amountOfPeople = scanDataAmountOfPeople();
-   
-   if (returnToPreviousStep)
-      choice = userChoice(normalFilenames, mindrekoedFilenames, dishes);
+   amountOfPeople = scanDataAmountOfPeople();
 
-   amountOfIngredients = encodeFilename(normalFilenames, mindrekoedFilenames, filename, choice, ingrediens,meals);
+
+   choice = userChoice(normalFilenames, mindrekoedFilenames, dishes);
+
+   amountOfIngredients = encodeFilename(normalFilenames, mindrekoedFilenames, filename, 
+                                          choice, ingrediens, meals,amountOfPeople);
    
    // amountOfIngredients = readDataIngredients(ingrediens, filename, meals);
    multiplier(amountOfPeople, ingrediens, amountOfIngredients);
@@ -109,22 +100,22 @@ void mealPlan (int firstTime, int returnToPreviousStep)
 }
 
 int encodeFilename (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], char filename[], 
-                  int choice, structIngrediens ingrediens[], structMeal meals[])
+                  int choice, structIngrediens ingrediens[], structMeal meals[], int amountOfPeople)
 {
    int tester;
    if (choice == 1){
       strcpy(filename,scanDatafilename(filename, normalFilenames));
       chdir("recipe");
-      tester =forLoopShoppingList(ingrediens,normalFilenames);
-      printShoppingList(ingrediens, tester);
+      tester = forLoopShoppingList(ingrediens, normalFilenames);
+      printShoppingList(ingrediens, tester, amountOfPeople);
 
       return readDataIngredients(ingrediens, filename, meals);
    }
    else if (choice == 2){
       strcpy(filename,scanDatafilename(filename, mindreKoedFilenames));
       chdir("mindrekoedrecipe");
-      tester =forLoopShoppingList(ingrediens,mindreKoedFilenames);
-      printShoppingList(ingrediens, tester);
+      tester = forLoopShoppingList(ingrediens, mindreKoedFilenames);
+      printShoppingList(ingrediens, tester, amountOfPeople);
       return readDataIngredients(ingrediens, filename, meals);
    }
    return 0;
@@ -436,10 +427,10 @@ void navFunction (int destination)
       instructions();
       break;
    case 2:
-      mealPlan(0, 1);
+      mealPlan();
       break;
    case 3:
-      mealPlan(0, 1);
+      mealPlan();
       break;
    default:
       break;
@@ -450,7 +441,7 @@ int forLoopShoppingList(structIngrediens ingrediens[], structFilenames allFilena
    int i;
    int amountOfIngredients = 0;
    for (i = 0; i<allFilenames[0].amountOfFiles; i++){
-      printf("\n \n%d\n \n",amountOfIngredients);
+      //printf("\n \n%d\n \n",amountOfIngredients);
       amountOfIngredients += shoppingList(ingrediens,allFilenames[i].filenames);
    }
    return amountOfIngredients;
@@ -475,10 +466,10 @@ int shoppingList(structIngrediens ingrediens[], char filename[]){
    if (strcmp(filename,"Soendag.txt") != 0 && strcmp(filename,"SoendagMindreKoed.txt") !=0 )
    {
       while (checker != -1){
-          printf("%s",filename);
+         // printf("%s",filename);
          index = -1;
-         printf("test %d\n", amountOfIngrediens);
-         fscanf(recipe, "%lf %[^:]: %d", &localVolume, &localIngrediensName, &checker);
+         //printf("test %d\n", amountOfIngrediens);
+         fscanf(recipe, "%lf %[^:]: %d", &localVolume, localIngrediensName, &checker);
          amountOfIngrediens++;
          do{
             index++;
@@ -508,9 +499,9 @@ int shoppingList(structIngrediens ingrediens[], char filename[]){
    return amountOfIngrediens;
 }
 
-void printShoppingList(structIngrediens ingrediens[], int amountOfingredients){
-   multiplier(1,ingrediens,amountOfingredients);
+void printShoppingList(structIngrediens ingrediens[], int amountOfingredients, int amountOfPeople){
+   multiplier(amountOfPeople,ingrediens,amountOfingredients);
    int i;
    for (i = 0; i < amountOfingredients; i++)
-   printf("%5.3f %s.... %d %d\n", ingrediens[i].volume, ingrediens[i].name , i , amountOfingredients);
+   printf("%5.3f %s\n", ingrediens[i].volume, ingrediens[i].name);
 }

@@ -2,22 +2,19 @@ Hjemmelavet salatpizza;
 Antal personer:; 
 Tidsforbrug: 60 minutter;
 Ingredienser:;
-1.0 Pizzabund: 11
-25.0 g. gaer: 11
-300.0 gram mel: 11
-1.5 dl. vand: 11
-0.25 dl. olie: 11
-1.0 Fyld: 11
-0.5 ps. Revet ost (mozzarella el. cheddar): 11
-0.125 pk. Champingoner: 11
-0.125 skive. Iceberg: 11
-0.125 skive. Agurk: 11
-1.0 skive. Tomater: 11
-0.5 pakke pepperoni: 11
-1.0 shat. Dressing: 11
-1.0 Pizzasauce: 11
-0.5 ds. hk. tomater: 11
-1.0 tsk. Toerret oregano: 11
+25.0 g. gaer: 1
+300.0 gram mel: 1
+1.5 dl. vand: 1
+0.25 dl. olie: 1
+0.5 ps. Revet ost (mozzarella el. cheddar): 1
+0.125 pk. Champingoner: 1
+0.125 skiver. Iceberg: 1
+0.125 skiver. Agurk: 1
+1.0 skiver. Tomater: 1
+0.5 pakke. pepperoni: 1
+1.0 spsk. Dressing: 1
+0.5 ds. hk. tomater: 1
+1.0 tsk. Toerret oregano: 1
 1.0 fed Hvidloeg: -1
 Basislager:
 0.5 tsk. Sukker til pizzasauce:
