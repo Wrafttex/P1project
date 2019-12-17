@@ -58,7 +58,6 @@ int forLoopShoppingList(structIngrediens ingrediens[], structFilenames allFilena
    int amountOfIngredients = 0;
 
    for (i = 0; i<allFilenames[0].amountOfFiles; i++){
-      printf("\n \n%d\n \n",amountOfIngredients);
       amountOfIngredients += readDataShoppingList(ingrediens,allFilenames[i].filenames);
    }
    return amountOfIngredients;

@@ -35,7 +35,6 @@ typedef struct structMealDeclare
 } structMeal;
 
 /* Prototypes */
-// skift navn på readDataIngredients til noget andet
 int help(void);
 int continueProgram (void);
 int scanDataAmountOfPeople (void);
@@ -43,7 +42,7 @@ int scanDataBetween (int HigestOption, int lowestOption);
 int readDataShoppingList(structIngrediens shoppinglist[], char filename[]);
 int forLoopShoppingList(structIngrediens shoppinglist[], structFilenames allFilenames[]);
 int ShoppingListDirections(structIngrediens shoppinglist[],  structFilenames allFilenames[], char direction[]);
-int readDataIngredients (structIngrediens ingrediens[], char filename[], structMeal meals[]);
+int readDataRecipe (structIngrediens ingrediens[], char filename[], structMeal meals[]);
 int encodeFilename (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], 
                      char filename[], int choice, structIngrediens ingrediens[], structMeal meals[], int amountOfPeople);
 int userChoice (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], structDishName dishes[],

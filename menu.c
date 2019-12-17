@@ -4,13 +4,15 @@
 void instructions (void) 
 {
    printf("-------------------------Den Digitale Madplan-------------------------\n\n");
-   printf("Alle madplaner gaelder for 7 dage,og inkludere inkoebsliste, opskrifter.\n\n");
+   printf("Alle madplaner gaelder for 7 dage,og inkludere inkoebsliste og opskrifter.\n\n");
    printf("Brug aa, ae og oe i stedet for danske bogstaver.\n\n");
    printf("Vaelg antal personer der skal foelge madplanen.\n\n");
    printf("Hvilken madplan vil du bruge, ud fra de givne valg.\n\n");
-   printf("Ved at trykke paa (i) vil indkoebslisten blive vist.\n\n");
-   printf("Hvis du har problemmer eller har valgt forkert tryk paa (h) for hjaelp.\n\n");
+   printf("Ved at vaelge en af de to indkoebslister vil den blive vist.\n\n");
+   printf("Hvis du har problemmer eller har valgt forkert vlaeg hjaelp.\n\n");
    printf("I hjaelp, vil der vaere mulighed for at gaa tilbage til starten.\n\n");
+   printf("Eller aat se instruktionerne igen. Efter madplanen er blevet udskrevet\n\n");
+   printf("vil der være mulighed for at gå tilbage ti starten eller afslutte programmet\n\n");
 }
 
 /* Choosing type of mealplan */

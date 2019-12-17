@@ -6,12 +6,12 @@ int encodeFilename (structFilenames normalFilenames[], structFilenames mindreKoe
     if (choice == 1 || choice  == 4){
       memcpy(filename,scanDatafilename(filename, normalFilenames),strlen(normalFilenames[6].filenames));
       chdir("recipe");
-      return readDataIngredients(ingrediens, filename, meals);
+      return readDataRecipe(ingrediens, filename, meals);
    }
    else if (choice == 2 || choice == 5){
       strcpy(filename,scanDatafilename(filename, mindreKoedFilenames));
       chdir("mindrekoedrecipe");
-      return readDataIngredients(ingrediens, filename, meals);
+      return readDataRecipe(ingrediens, filename, meals);
    }
 
    return 0;
@@ -62,7 +62,7 @@ void readDataDishNames (structFilenames normalFilenames[], structFilenames mindr
 /* This function reads the ingredients and puts value into a double and ingredient-name into a string,
  * so that we can change the value of how much a person should use
  * From the '$' in txt-file to the int -1 appears, we  read the ingredient volume and ingredient name */
-int readDataIngredients (structIngrediens ingrediens[], char filename[], structMeal meals[]) 
+int readDataRecipe (structIngrediens ingrediens[], char filename[], structMeal meals[]) 
 {
    int checker = 0, i = 0;
    strcat(filename, ".txt"); 
@@ -73,7 +73,7 @@ int readDataIngredients (structIngrediens ingrediens[], char filename[], structM
    if (recipe == NULL)
    {
       printf("The file name entered isn't viable. Please try again");
-      EXIT_FAILURE;
+      exit(-1);
    }
    
    fscanf(recipe, "%[^;]; %[^;]; %[^;]; %[^;];", meals[i].mealName, meals[i].amountOfPeople, meals[i].preparationTime, meals[i].ingredients);
@@ -105,13 +105,12 @@ int readDataShoppingList(structIngrediens ingrediens[], char filename[])
    char localfilename[30];
    strcpy(localfilename,filename);
    strcat(localfilename, ".txt");
-   printf("%s",filename);
    recipe = fopen(localfilename, "r");
    
    if (recipe == NULL)
    {
       printf("The file name entered isn't viable. Please try again");
-      EXIT_FAILURE;
+      exit(-1);
    }
 
    fscanf(recipe, "%*[^;]; %*[^;]; %*[^;]; %*[^;];");
