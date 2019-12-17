@@ -1,4 +1,18 @@
 #include "header.h"
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: This function reads the ingredients and puts value into a           */
+/*            double and ingredient-name into a string, so that we can change   */
+/*            change the value of how much a person should use From the '$'     */
+/*            in txt-file to the int -1 appears, we  read the ingredient volume */                                                               
+/*            and ingredient name                                               */
+/* Parameters: NONE                                                             */
+/*                                                                              */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:                                                                       */
+/*                                                                              */
+/********************************************************************************/
 
 int scanDataBetween (int highestOption, int lowestOption)
 {
@@ -19,7 +33,17 @@ int scanDataBetween (int highestOption, int lowestOption)
    
    return choice;
 }
-
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: This function reads what the user input, and checks that it is      */
+/*            inside of the parementers, and that a letter will be decline      */
+/* Parameters: NONE                                                             */
+/*                                                                              */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:                                                                       */
+/*                                                                              */
+/********************************************************************************/
 int scanDataAmountOfPeople(void)
 {
    int amountOfPeople = 0;
@@ -29,12 +53,25 @@ int scanDataAmountOfPeople(void)
       printf("\nAntal personer: ");
       scanf("%d", &amountOfPeople);
       printf("\n");
+      fflush(stdin);
    } while (!(amountOfPeople > 0));
    
    return amountOfPeople;
 }
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: scans for which file you want to access,                            */
+/*          and puts into a char array that is called filename                  */
+/*                                                                              */
+/* Parameters: NONE                                                             */
+/*                                                                              */
+/* Returns: Filename.                                                           */
+/*                                                                              */
+/* Notes: Do-while-loop scanning for given day of the week,                     */
+/*  comparing chosen weekday(declared in weekdays string array)                 */
+/* with filename, returning filename                                            */ 
+/********************************************************************************/
 
-/* scans for which file you want to access, and puts into a char array that is cal led filnavn*/
 char* scanDatafilename (char filename[], structFilenames allfilenames[])
 {
    int i;

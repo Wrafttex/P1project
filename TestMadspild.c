@@ -4,7 +4,6 @@
 #include <dirent.h>
 
 #define MAX_NAME_LGT 500
-//tror jeg kommer til at skift hvordan ingrediens virker fordi jeg må nok få fat type af volume, får at kunne gøre indkøbliste korrekt
 
 typedef struct structDishNameDeclare
 {
@@ -32,7 +31,7 @@ typedef struct structMealDeclare
 } structMeal;
 
 /* Prototypes */
-// skift navn på readDataIngredients til noget andet
+/* skift navn på readDataIngredients til noget andet */
 int help(void);
 int userChoice (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], structDishName dishes[]);
 int scanDataAmountOfPeople (void);
@@ -76,21 +75,21 @@ void main (void)
    mealPlanOverview(dishes, normalFilenames);
 
 /*
-   // TEST START
+    TEST START
    readDataDishNames(normalFilenames, mindrekoedFilenames, dishes, 2);
    printf("Did run readData");
    mealPlanOverview(dishes, normalFilenames);
    printf("Did run mealPlan");
-   // TEST END
+    TEST END
 */
    
    choice = userChoice(normalFilenames, mindrekoedFilenames, dishes);
    amountOfIngredients = encodeFilename(normalFilenames, mindrekoedFilenames, filename, choice, ingrediens,meals);
    
-   // amountOfIngredients = readDataIngredients(ingrediens, filename, meals);
+   /* amountOfIngredients = readDataIngredients(ingrediens, filename, meals); */
    multiplier(amountOfPeople, ingrediens, amountOfIngredients);
    loopPrint(ingrediens, meals, amountOfPeople, filename, amountOfIngredients);
-   //chdir("..");
+   /*chdir("..");*/
    exit(0);
 }
 

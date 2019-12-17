@@ -7,7 +7,6 @@
 #include <unistd.h>
 
 #define MAX_NAME_LGT 500
-//tror jeg kommer til at skift hvordan ingrediens virker fordi jeg må nok få fat type af volume, får at kunne gøre indkøbliste korrekt
 
 typedef struct structDishNameDeclare
 {

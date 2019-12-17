@@ -40,9 +40,7 @@ void mealPlan (void)
    findingNormalTxt(normalFilenames);
    findingMindreKoedTxt(mindrekoedFilenames);
    amountOfIngredientsInNormalShoppingList = ShoppingListDirections(groceryListNormal, normalFilenames, "recipe");
-   // printf("\n%d\t", amountOfIngredientsInNormalShoppingList);
    amountOfIngredientsInLessMeatShoppingList = ShoppingListDirections(groceryListLessMeat, mindrekoedFilenames, "mindrekoedrecipe");
-   // printf("\nhello%d", amountOfIngredientsInLessMeatShoppingList);
 
    do
    {  

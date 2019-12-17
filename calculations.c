@@ -1,6 +1,17 @@
 #include "header.h"
 
-/*Function multiplying the chosen amount of people, with the amount of ingredients.*/
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: The function purpose is to multiply ingredients with                */
+/* how many people                                                              */
+/* Parameters: Int amountOfPeople, structIngrediens ingrediens[] and            */
+/*             int amountOfIngredients.                                         */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:  uses amount of ingredients to how many ingdrients their needs to be  */
+/*         multiply                                                             */
+/********************************************************************************/
+
 void multiplier(int amountOfPeople, structIngrediens ingrediens[], int amountOfIngredients) 
 {
    int i; 

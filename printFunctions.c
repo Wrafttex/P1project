@@ -1,6 +1,16 @@
 #include "header.h"
 
-/*Function printing Meal Name, Amount of People, Preparation time and ingredients in a for-loop iterating over the total amount of ingredients */
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: is to print out the recipe                                          */
+/*                                                                              */
+/* Parameters: NONE                                                             */
+/*                                                                              */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:                                                                       */
+/*                                                                              */
+/********************************************************************************/
 void loopPrint(structIngrediens ingrediens[], structMeal meals[], int amountOfPeople, char filename[], int amountOfIngredients)
 {
    int i;

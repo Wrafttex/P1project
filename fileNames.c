@@ -1,7 +1,19 @@
 #include "header.h"
 
 
-/*Function reading different files in given directory in a while loop for every file*/
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: The function purpose is to read each txt files name in the folder   */
+/* so that we can use it later for checking that the user has written the file  */
+/* correctly                                                                    */
+/* Parameters:    structFilenames filename[]                                    */
+/*                                                                              */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:                                                                       */
+/*                                                                              */
+/********************************************************************************/
+
 void findingNormalTxt(structFilenames filename[])
 {
    struct dirent* recipe;
@@ -27,6 +39,21 @@ void findingNormalTxt(structFilenames filename[])
    closedir(dr);
 }
 
+
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: The function purpose is to read each txt files name in the folder   */
+/* so that we can use it later for checking that the user has written the file  */
+/* correctly                                                                    */
+/* Parameters:    structFilenames filename[]                                    */
+/*                                                                              */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:  NONE.                                                                */
+/*                                                                              */
+/********************************************************************************/
+
+
 void findingMindreKoedTxt(structFilenames mindreKoedFilename[])
 {
    struct dirent *recipe;
@@ -51,7 +78,18 @@ void findingMindreKoedTxt(structFilenames mindreKoedFilename[])
    }
    closedir(dr);
 } 
-
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: this function is used to open each file by using a loop, by         */                                                                    
+/*          sending one txt file name to readdatashoppinglist                   */                                                                           
+/*                                                                              */
+/* Parameters: structIngrediens ingrediens[], structFilenames allFilenames[]    */
+/*                                                                              */
+/* Returns: amountOfIngredients                                                 */
+/*                                                                              */
+/* Notes:                                                                       */
+/*                                                                              */
+/********************************************************************************/
 int forLoopShoppingList(structIngrediens ingrediens[], structFilenames allFilenames[])
 {
    int i;

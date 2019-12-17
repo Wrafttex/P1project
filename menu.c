@@ -1,6 +1,17 @@
 #include "header.h"
 
-/* Function for printing user-instructions */
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: The function purpose is to print out the instructions               */
+/*                                                                              */
+/* Parameters: NONE                                                             */
+/*                                                                              */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:                                                                       */
+/*                                                                              */
+/********************************************************************************/
+
 void instructions (void) 
 {
    printf("-------------------------Den Digitale Madplan-------------------------\n\n");
@@ -12,10 +23,26 @@ void instructions (void)
    printf("Hvis du har problemmer eller har valgt forkert vlaeg hjaelp.\n\n");
    printf("I hjaelp, vil der vaere mulighed for at gaa tilbage til starten.\n\n");
    printf("Eller aat se instruktionerne igen. Efter madplanen er blevet udskrevet\n\n");
-   printf("vil der være mulighed for at gå tilbage ti starten eller afslutte programmet\n\n");
+   printf("vil der vaere mulighed for at gaa tilbage ti starten eller afslutte programmet\n\n");
 }
 
-/* Choosing type of mealplan */
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: this function show which possibility the user has, then runs the    */
+/*          nexts funtion based on what the user choice                         */
+/*                                                                              */
+/* Parameters: structFilenames normalFilenames[],                                */
+/*   structFilenames mindreKoedFilenames[], structDishName dishes[],            */
+/*   int amountOfPeople, structIngrediens groceryListNormal[],                  */
+/*   structIngrediens groceryListLessMeat[],                                    */
+/*   int amountOfIngredientsInLessMeatShoppingList                              */
+/*   int amountOfIngredientsInNormalShoppingList                                */
+/*                                                                              */
+/* Returns: Choice.                                                             */
+/*                                                                              */
+/* Notes:                                                                       */
+/*                                                                              */
+/********************************************************************************/
 int userChoice (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], structDishName dishes[],
                    int amountOfPeople, structIngrediens groceryListNormal[], structIngrediens groceryListLessMeat[],
                             int amountOfIngredientsInLessMeatShoppingList, int amountOfIngredientsInNormalShoppingList)
@@ -70,6 +97,17 @@ int userChoice (structFilenames normalFilenames[], structFilenames mindreKoedFil
 
    return choice;
 }
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: it prints out the meals for the weak.                               */
+/*                                                                              */
+/* Parameters: NONE                                                             */
+/*                                                                              */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:  NONE:                                                                */
+/*                                                                              */
+/********************************************************************************/
 
 void mealPlanOverview (structDishName dishes[], structFilenames normalFilenames[])
 {
@@ -82,7 +120,17 @@ void mealPlanOverview (structDishName dishes[], structFilenames normalFilenames[
    printf("%-7s: %s\n", normalFilenames[4].filenames, dishes[4].dishName);
    printf("%-7s: %s\n", normalFilenames[3].filenames, dishes[3].dishName);
 }
-
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: Prints out the Help.                                                */
+/*                                                                              */
+/* Parameters: NONE                                                             */
+/*                                                                              */
+/* Returns: scandataBetween.                                                    */
+/*                                                                              */
+/* Notes:  NONE:                                                                */
+/*                                                                              */
+/********************************************************************************/
 int help (void)
 {
    printf("---------------Hjaelp---------------\n\n");
@@ -95,7 +143,17 @@ int help (void)
 
    return scanDataBetween(3, 0);
 }
-
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: navigate between Mealplan and instructions                          */
+/*                                                                              */
+/* Parameters: int destination                                                  */
+/*                                                                              */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:  NONE:                                                                */
+/*                                                                              */
+/********************************************************************************/
 void navFunction (int destination)
 {
    switch (destination)

@@ -1,5 +1,17 @@
 #include "header.h"
 
+
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: to run function based on what the user choose is                    */
+/*                                                                              */
+/* Parameters: NONE                                                             */
+/*                                                                              */
+/* Returns: int from funtion readDataRecipe.                                                               */
+/*                                                                              */
+/* Notes:                                                                       */
+/*                                                                              */
+/********************************************************************************/
 int encodeFilename (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], char filename[], 
                   int choice, structIngrediens ingrediens[], structMeal meals[], int amountOfPeople)
 {
@@ -16,6 +28,18 @@ int encodeFilename (structFilenames normalFilenames[], structFilenames mindreKoe
 
    return 0;
 }
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: The function reads the recipe name of each recipe, in both files    */
+/*                                                                              */
+/* Parameters: structFilenames normalFilenames[],                               */
+/*   structFilenames mindreKoedFilenames[], structDishName dishes[], int choice */
+/*                                                                              */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:                                                                       */
+/*                                                                              */
+/********************************************************************************/
 
 void readDataDishNames (structFilenames normalFilenames[], structFilenames mindreKoedFilenames[], structDishName dishes[], int choice)
 {
@@ -59,9 +83,24 @@ void readDataDishNames (structFilenames normalFilenames[], structFilenames mindr
    chdir("..");
 }
 
-/* This function reads the ingredients and puts value into a double and ingredient-name into a string,
- * so that we can change the value of how much a person should use
- * From the '$' in txt-file to the int -1 appears, we  read the ingredient volume and ingredient name */
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: first it reads name of the recipe, sentence: amount of people,      */
+/*            sentence: preparetime, and the word ingredients                   */
+/*            Then it reads the ingredients and puts value into a               */
+/*            double and ingredient-name into a string, so that we can change   */
+/*            change the value of how much a person should use From the '$'     */
+/*            in txt-file to the int -1 appears, we  read the ingredient volume */                                                               
+/*            and ingredient name. after it's done with that, then it will read */
+/*            procedure 
+/* Parameters: NONE                                                             */
+/*                                                                              */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:                                                                       */
+/*                                                                              */
+/********************************************************************************/
+
 int readDataRecipe (structIngrediens ingrediens[], char filename[], structMeal meals[]) 
 {
    int checker = 0, i = 0;
@@ -93,6 +132,20 @@ int readDataRecipe (structIngrediens ingrediens[], char filename[], structMeal m
    return i;
 }
 
+/********************************************************************************/
+/*                                                                              */
+/* Purpose: This function reads the ingredients and puts value into a           */
+/*            double and ingredient-name into a string, so that we can change   */
+/*            change the value of how much a person should use From the '$'     */
+/*            in txt-file to the int -1 appears, we  read the ingredient volume */                                                               
+/*            and ingredient name, for each file in that folder                 */
+/* Parameters: NONE                                                             */
+/*                                                                              */
+/* Returns: NONE.                                                               */
+/*                                                                              */
+/* Notes:                                                                       */
+/*                                                                              */
+/********************************************************************************/
 
 int readDataShoppingList(structIngrediens ingrediens[], char filename[])
 {
@@ -117,9 +170,7 @@ int readDataShoppingList(structIngrediens ingrediens[], char filename[])
    if (strcmp(localfilename,"Soendag.txt") != 0 && strcmp(localfilename,"SoendagMindreKoed.txt") !=0)
    {
       while (checker != -1){
-         // printf("%s",filename);
          index = -1;
-         //printf("test %d\n", amountOfIngrediens);
          fscanf(recipe, "%lf %[^:]: %d", &localVolume, localIngrediensName, &checker);
          amountOfIngrediens++;
          do{
@@ -135,8 +186,6 @@ int readDataShoppingList(structIngrediens ingrediens[], char filename[])
                ingrediens[index].volume += localVolume;
             }
             else {}
-          //printf("%f %s... %f %s (%d) |%d| <%d>\n", ingrediens[index].volume, ingrediens[index].name, localVolume, localIngrediensName, index,strcmp(ingrediens[index].name, localIngrediensName), checker );
-            
          }while(strcmp(ingrediens[index].name, localIngrediensName) != 0);
       }
    }
