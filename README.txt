@@ -7,7 +7,7 @@ og kompileret med gcc-kompilatoren. exe-filen bliver kørt i dit operativsystems
 
 ----------------------------------------------------------------------------------------------
 
-Der er vedlagr en exe fil ved navn denDigitaleMadplan.exe, som er en compilet version af
+Der er vedlagtr en exe fil ved navn denDigitaleMadplan.exe, som er en compilet version af
 programmet. Ved at køre denne fil vil et vindue åbne med programmet i. Hvis denne exe fil ikke
 virker af en eller anden grund er der en makefil inkluderet. For at compile programmet med en
 makefil åber du din compiler finder frem til mappen. I compileren skal du skrive "make" ind og
